@@ -10,8 +10,9 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* align-items: center; */
-  max-width: 1200px;
+  align-items: center;
+  max-width: 1400px;
+  margin: auto;
 }
 .pokemon {
   margin: 0.5rem;

@@ -1,5 +1,5 @@
 const pokeContainer = document.querySelector(".poke-container");
-const pokeCount = 150;
+const pokeCount = 250;
 const pokeColor = {
   normal: "#E6D5B8",
   fighting: "#E83A14",
@@ -22,26 +22,30 @@ const pokeColor = {
   unknown: "#524A4E",
   shadow: "#121212",
 };
-const fetchPokemon = () => {
+console.log(pokeColor.dragon);
+const fetchPokemon = async () => {
   pokeContainer.innerHTML = "";
   for (let i = 1; i <= pokeCount; i++) {
-    pokemon(i);
+    await pokemon(i);
   }
 };
 const pokemon = async function (id) {
   const apiUrl = `https://pokeapi.co/api/v2/pokemon/${id}`;
   const res = await fetch(apiUrl);
   const data = await res.json();
-  //   const type1 = data.types[0].type.name;
-  //   console.log(type1);
-  //   console.log(pokeColor);
+  const type1 = data.types[0].type.name;
+  console.log(type1);
+  // console.log(pokeColor[type1]);
+  // console.log(data);
   const name = data.name[0].toUpperCase() + data.name.slice(1);
-  const html = `<div class="pokemon" style="background-color: aquamarine;">
+  const html = `<div class="pokemon" style="background-color: ${
+    pokeColor[type1]
+  };">
   <div class="img">
       <img src="${data.sprites.front_default}" alt="${data.name}">
   </div>
   <div class="info">
-      <span class="id">#${id}</span>
+      <span class="id">#${id.toString().padStart(3, 0)}</span>
       <h3 class="name">${name}</h3>
       <small class="type">Type: <span>${data.types[0].type.name}</span></small>
   </div>`;
