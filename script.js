@@ -23,6 +23,7 @@ const pokeColor = {
   shadow: "#121212",
 };
 const fetchPokemon = () => {
+  pokeContainer.innerHTML = "";
   for (let i = 1; i <= pokeCount; i++) {
     pokemon(i);
   }
@@ -31,6 +32,19 @@ const pokemon = async function (id) {
   const apiUrl = `https://pokeapi.co/api/v2/pokemon/${id}`;
   const res = await fetch(apiUrl);
   const data = await res.json();
-  console.log(data);
+  //   const type1 = data.types[0].type.name;
+  //   console.log(type1);
+  //   console.log(pokeColor);
+  const name = data.name[0].toUpperCase() + data.name.slice(1);
+  const html = `<div class="pokemon" style="background-color: aquamarine;">
+  <div class="img">
+      <img src="${data.sprites.front_default}" alt="${data.name}">
+  </div>
+  <div class="info">
+      <span class="id">#${id}</span>
+      <h3 class="name">${name}</h3>
+      <small class="type">Type: <span>${data.types[0].type.name}</span></small>
+  </div>`;
+  pokeContainer.insertAdjacentHTML("beforeend", html);
 };
 fetchPokemon();
