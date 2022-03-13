@@ -18,7 +18,7 @@ const pokeColor = {
   ice: "#D6E5FA",
   dragon: "#FF3F00",
   dark: "#333333",
-  fairy: "#FFFDF9",
+  fairy: "#FFC0D3",
   unknown: "#524A4E",
   shadow: "#121212",
 };

@@ -48,8 +48,7 @@ body {
   font-weight: bold;
 }
 .pokedex {
-  display: flex;
-  justify-content: center;
+  text-align: center;
   margin: 2rem;
   color: blue;
 }
